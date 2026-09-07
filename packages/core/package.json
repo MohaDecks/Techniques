@@ -1,0 +1,16 @@
+{
+  "name": "@farsamo/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./db": "./src/db.ts",
+    "./uploads": "./src/uploads.ts",
+    "./cloudinary": "./src/cloudinary.ts"
+  },
+  "dependencies": {
+    "cloudinary": "^2.11.0",
+    "mongodb": "^6.20.0"
+  }
+}

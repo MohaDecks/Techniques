@@ -1,0 +1,20 @@
+{
+  "name": "farsamo",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "customer": "npm run dev -w @farsamo/customer",
+    "admin": "npm run dev -w @farsamo/admin",
+    "dev": "npm run customer",
+    "build": "npm run build -w @farsamo/customer && npm run build -w @farsamo/admin",
+    "lint": "npm run lint -w @farsamo/customer && npm run lint -w @farsamo/admin",
+    "seed": "node scripts/seed-mongo.mjs"
+  },
+  "dependencies": {
+    "mongodb": "^6.20.0"
+  }
+}
