@@ -86,7 +86,10 @@ async function readStoreFromMongo(): Promise<AppState | null> {
     ? withoutMongoId(settingsDoc as unknown as AppSettings & { id?: string; _id?: unknown })
     : seedState.settings;
 
-  const collected = Object.fromEntries(entries) as Pick<AppState, CollectionName>;
+  const collected = Object.fromEntries(entries) as unknown as Pick<
+    AppState,
+    CollectionName
+  >;
   return mergeState({
     ...collected,
     settings,
@@ -104,7 +107,9 @@ async function writeStoreToMongo(state: AppState): Promise<void> {
       await collection.deleteMany({});
       const rows = next[name];
       if (rows.length) {
-        await collection.insertMany(rows.map((item) => withMongoId(item)));
+        await collection.insertMany(
+          rows.map((item) => withMongoId(item)) as never,
+        );
       }
     }),
   );
