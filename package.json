@@ -11,6 +11,7 @@
     "admin": "npm run dev -w @farsamo/admin",
     "dev": "npm run customer",
     "build": "npm run build -w @farsamo/customer && npm run build -w @farsamo/admin",
+    "deploy": "npm run build && pm2 startOrReload ecosystem.config.cjs --update-env",
     "lint": "npm run lint -w @farsamo/customer && npm run lint -w @farsamo/admin",
     "seed": "node scripts/seed-mongo.mjs"
   },
